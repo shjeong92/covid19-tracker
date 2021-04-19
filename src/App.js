@@ -4,6 +4,7 @@ import {
   Select,  
 } from "@material-ui/core";
 import React, {useState,useEffect,} from "react";
+import InfoBox from './InfoBox';
 import './App.css';
 
 function App() {
@@ -51,16 +52,20 @@ function App() {
           onChange={onCountryChange}
           value={country}>
           <MenuItem value="worldwide">Worldwide</MenuItem>
-          {/* Loop through all the countries and show a drop down list of the opti*/}
           {countries.map(country =>(
               <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
         </Select>
       </FormControl>
       </div>
-      {/* Title + Select input dropsown field */}
 
+      <div className="app__stats">
+        <InfoBox title="Coronavirus cases" cases = {123}  total="2000"></InfoBox>
+        <InfoBox title="Recovored" cases = {1243} total="3000"></InfoBox>
+        <InfoBox title="Deaths" cases = {1213} total="4000"></InfoBox>
+      </div>
       {/* InfoBoxes */}
+
       {/* InfoBoxes */}
       {/* InfoBoxes */}
       
