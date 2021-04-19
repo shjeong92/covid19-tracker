@@ -8,12 +8,15 @@ import {
 import React, {useState,useEffect,} from "react";
 import InfoBox from './InfoBox';
 import Map from './Map';
+import Table from './Table';
 import './App.css';
+import { sortData } from "./util";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
-  const [countryInfo, setCountryInfo] = useState({})
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([])
   // USEREFFECT = Runs a piece of code
   // boased on a givin condition
   useEffect(() => {
@@ -37,6 +40,8 @@ function App() {
             name: country.country, //United Stats, United Kingdom ...
             value: country.countryInfo.iso2 // US, UK ...
           }));
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries)
       });
     };
@@ -48,7 +53,7 @@ function App() {
     const countryCode = event.target.value;
 
     const url =
-     countryCode == 'worldwide' 
+     countryCode === 'worldwide' 
       ? 'https://disease.sh/v3/covid-19/all' 
       : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
@@ -90,6 +95,7 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Countries</h3>
+          <Table countries={tableData}></Table>
           <h3>Worldwide new cases</h3>
         </CardContent>
       </Card>
