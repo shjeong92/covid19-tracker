@@ -3,7 +3,9 @@ import { Line } from 'react-chartjs-2';
 import numeral from "numeral"
 
 const options = {
-
+    legend: {
+      display: false,
+    },
     elements: {
       point: {
         radius: 0,
