@@ -11,7 +11,8 @@ import Map from './Map';
 import Table from './Table';
 import './App.css';
 import { sortData } from "./util";
-
+import LineGraph from "./LineGraph";
+import LineGraph2 from "./LineGraph2";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
@@ -63,8 +64,7 @@ function App() {
       setCountry(countryCode)
       setCountryInfo(data)
     })
-    // https://disease.sh/v3/covid-19/all
-    // 
+
   };
   console.log("COUNTRY INFO >>>", countryInfo)
   return (
@@ -97,10 +97,12 @@ function App() {
           <h3>Live Cases by Countries</h3>
           <Table countries={tableData}></Table>
           <h3>Worldwide new cases</h3>
+          <LineGraph/>
         </CardContent>
       </Card>
-
       {/* Map */}
+
+      
     </div>
   );
 }
